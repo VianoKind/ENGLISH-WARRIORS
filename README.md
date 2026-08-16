@@ -1,1 +1,673 @@
-# ENGLISH-WARRIORS
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>TKA English Warriors</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            color: #1a1a2e;
+            line-height: 1.7;
+            background: #f0f2f5;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 25mm 20mm;
+            margin: 0 auto 20px auto;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            page-break-after: always;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page:last-child {
+            page-break-after: auto;
+        }
+
+        /* Cover Page */
+        .cover {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+        }
+
+        .cover-badge {
+            background: #e94560;
+            color: white;
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .cover h1 {
+            font-size: 52px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            font-weight: 300;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 50px;
+            opacity: 0.9;
+        }
+
+        .cover-concept {
+            font-size: 14px;
+            max-width: 500px;
+            line-height: 1.8;
+            opacity: 0.85;
+            margin-bottom: 40px;
+        }
+
+        .cover-table {
+            width: 100%;
+            max-width: 600px;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .cover-table th {
+            background: rgba(255,255,255,0.1);
+            padding: 12px 16px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .cover-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 13px;
+        }
+
+        .cover-table td:first-child {
+            font-weight: 700;
+            width: 40px;
+            text-align: center;
+        }
+
+        .cover-footer {
+            position: absolute;
+            bottom: 25mm;
+            font-size: 11px;
+            opacity: 0.5;
+            letter-spacing: 2px;
+        }
+
+        /* Content Pages */
+        .section-header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid;
+        }
+
+        .level-num {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 50%;
+            color: white;
+            font-weight: 800;
+            font-size: 16px;
+            margin-right: 15px;
+            vertical-align: middle;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 800;
+            display: inline;
+            vertical-align: middle;
+        }
+
+        .tagline {
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 8px;
+            margin-left: 55px;
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        .peserta {
+            background: #f8f9fa;
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin: 20px 0 25px 0;
+            font-size: 13px;
+            border-left: 4px solid;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .content-box {
+            background: #fafbfc;
+            border-radius: 10px;
+            padding: 18px;
+            border: 1px solid #e9ecef;
+        }
+
+        .content-box h3 {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid;
+            display: inline-block;
+        }
+
+        .content-box ul {
+            list-style: none;
+            font-size: 12.5px;
+            line-height: 2;
+        }
+
+        .content-box ul li::before {
+            content: "›";
+            margin-right: 8px;
+            font-weight: 700;
+        }
+
+        .target-box {
+            margin-top: 25px;
+            padding: 18px 22px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            font-style: italic;
+            text-align: center;
+            border: 2px dashed;
+        }
+
+        .page-footer {
+            position: absolute;
+            bottom: 15mm;
+            left: 20mm;
+            right: 20mm;
+            text-align: center;
+            font-size: 10px;
+            color: #adb5bd;
+            border-top: 1px solid #e9ecef;
+            padding-top: 10px;
+        }
+
+        /* Color Themes */
+        .theme-vanguard .section-header { border-color: #e94560; }
+        .theme-vanguard .level-num { background: #e94560; }
+        .theme-vanguard .tagline { color: #e94560; }
+        .theme-vanguard .peserta { border-color: #e94560; }
+        .theme-vanguard .content-box h3 { border-color: #e94560; color: #e94560; }
+        .theme-vanguard .content-box ul li::before { color: #e94560; }
+        .theme-vanguard .target-box { border-color: #e94560; color: #c73e54; background: #fff5f6; }
+
+        .theme-pathfinder .section-header { border-color: #f4a261; }
+        .theme-pathfinder .level-num { background: #f4a261; }
+        .theme-pathfinder .tagline { color: #c47a3a; }
+        .theme-pathfinder .peserta { border-color: #f4a261; }
+        .theme-pathfinder .content-box h3 { border-color: #f4a261; color: #c47a3a; }
+        .theme-pathfinder .content-box ul li::before { color: #f4a261; }
+        .theme-pathfinder .target-box { border-color: #f4a261; color: #a0632f; background: #fffaf5; }
+
+        .theme-initiate .section-header { border-color: #2a9d8f; }
+        .theme-initiate .level-num { background: #2a9d8f; }
+        .theme-initiate .tagline { color: #1d7066; }
+        .theme-initiate .peserta { border-color: #2a9d8f; }
+        .theme-initiate .content-box h3 { border-color: #2a9d8f; color: #1d7066; }
+        .theme-initiate .content-box ul li::before { color: #2a9d8f; }
+        .theme-initiate .target-box { border-color: #2a9d8f; color: #1d7066; background: #f5fcfb; }
+
+        /* Roadmap Page */
+        .roadmap-page {
+            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+        }
+
+        .roadmap-title {
+            font-size: 28px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .roadmap-sub {
+            text-align: center;
+            opacity: 0.7;
+            font-size: 14px;
+            margin-bottom: 40px;
+        }
+
+        .roadmap-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .roadmap-card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 12px;
+            padding: 20px 24px;
+            text-align: center;
+            min-width: 160px;
+        }
+
+        .roadmap-card h4 {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+
+        .roadmap-card p {
+            font-size: 11px;
+            opacity: 0.7;
+            line-height: 1.5;
+        }
+
+        .roadmap-arrow {
+            font-size: 24px;
+            opacity: 0.5;
+        }
+
+        .meaning-box {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .meaning-box h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-align: center;
+            opacity: 0.9;
+        }
+
+        .meaning-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .meaning-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .meaning-item strong {
+            color: #e94560;
+            font-size: 13px;
+            min-width: 70px;
+        }
+
+        .meaning-item span {
+            font-size: 12px;
+            opacity: 0.85;
+            line-height: 1.6;
+        }
+
+        .profesi-box {
+            background: rgba(233, 69, 96, 0.1);
+            border: 1px solid rgba(233, 69, 96, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .profesi-box h3 {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            color: #e94560;
+        }
+
+        .profesi-box p {
+            font-size: 12px;
+            line-height: 1.8;
+            opacity: 0.85;
+        }
+
+        .final-quote {
+            text-align: center;
+            margin-top: 35px;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+
+        @media print {
+            body { background: white; }
+            .page { 
+                margin: 0; 
+                box-shadow: none; 
+                page-break-after: always;
+            }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+
+<!-- HALAMAN 1: COVER -->
+<div class="page cover">
+    <div class="cover-badge">Program Pembelajaran</div>
+    <h1>TKA ENGLISH<br>WARRIORS</h1>
+    <div class="cover-subtitle">Learn • Speak • Connect • Impact</div>
+    <div class="cover-concept">
+        Konsep materi: membangun kemampuan Bahasa Inggris secara bertahap, 
+        dari fondasi vocabulary hingga komunikasi yang siap digunakan dalam lingkungan global.
+    </div>
+
+    <table class="cover-table">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Level</th>
+                <th>Fokus</th>
+                <th>Target</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>English Vanguard</td>
+                <td>Speaking & Advanced Vocabulary</td>
+                <td>Lancar berkomunikasi dan mampu berdiskusi secara profesional</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>English Pathfinder</td>
+                <td>Conversation & Confidence</td>
+                <td>Mampu menggunakan vocabulary dalam percakapan sehari-hari</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>English Initiate</td>
+                <td>Basic Vocabulary & Foundation</td>
+                <td>Menguasai dasar vocabulary, grammar, dan percakapan sederhana</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="cover-footer">BEYOND BORDERS • BEYOND LIMITS</div>
+</div>
+
+<!-- HALAMAN 2: ENGLISH VANGUARD -->
+<div class="page theme-vanguard">
+    <div class="section-header">
+        <div>
+            <span class="level-num">1</span>
+            <span class="section-title">ENGLISH VANGUARD</span>
+        </div>
+        <div class="tagline">"Speak Beyond Borders"</div>
+    </div>
+
+    <div class="peserta">
+        <strong>Peserta:</strong> Untuk peserta yang sudah memiliki banyak kosakata, pengucapan cukup baik, 
+        dan mampu memahami percakapan Bahasa Inggris kompleks.
+    </div>
+
+    <div class="content-grid">
+        <div class="content-box">
+            <h3>Advanced Conversation</h3>
+            <ul>
+                <li>Daily conversation</li>
+                <li>Discussion</li>
+                <li>Debate</li>
+                <li>Argumentation</li>
+                <li>Giving opinions</li>
+                <li>Agreeing & disagreeing</li>
+                <li>Asking critical questions</li>
+                <li>Negotiation</li>
+                <li>Public speaking</li>
+            </ul>
+        </div>
+        <div class="content-box">
+            <h3>Advanced Vocabulary</h3>
+            <ul>
+                <li>Academic vocabulary</li>
+                <li>Professional vocabulary</li>
+                <li>International relations</li>
+                <li>Politics & diplomacy</li>
+                <li>Economics</li>
+                <li>Technology</li>
+                <li>Culture</li>
+                <li>Global issues</li>
+            </ul>
+        </div>
+        <div class="content-box">
+            <h3>Speaking & Pronunciation</h3>
+            <ul>
+                <li>Intonation</li>
+                <li>Word stress</li>
+                <li>Connected speech</li>
+                <li>Natural pronunciation</li>
+                <li>Speaking spontaneously</li>
+                <li>Mengurangi jeda dan filler saat berbicara</li>
+            </ul>
+        </div>
+        <div class="content-box">
+            <h3>Real-World English</h3>
+            <ul>
+                <li>Simulasi interview kerja</li>
+                <li>Meeting internasional</li>
+                <li>Presentasi</li>
+                <li>Conference</li>
+                <li>Traveling abroad</li>
+                <li>Networking dengan orang asing</li>
+                <li>Diskusi masalah internasional</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="target-box">
+        Target Akhir: "I don't just understand English. I can use English to influence and lead."
+    </div>
+
+    <div class="page-footer">TKA English Warriors • English Vanguard</div>
+</div>
+
+<!-- HALAMAN 3: ENGLISH PATHFINDER -->
+<div class="page theme-pathfinder">
+    <div class="section-header">
+        <div>
+            <span class="level-num">2</span>
+            <span class="section-title">ENGLISH PATHFINDER</span>
+        </div>
+        <div class="tagline">"From Knowing to Speaking"</div>
+    </div>
+
+    <div class="peserta">
+        <strong>Peserta:</strong> Untuk peserta yang sudah mengetahui banyak vocabulary dan dapat mengucapkannya, 
+        tetapi belum lancar saat berbincang secara aktif.
+    </div>
+
+    <div class="content-grid">
+        <div class="content-box">
+            <h3>Everyday Conversation</h3>
+            <ul>
+                <li>Introducing yourself</li>
+                <li>Talking about hobbies</li>
+                <li>School</li>
+                <li>Family</li>
+                <li>Friends</li>
+                <li>Travel</li>
+                <li>Food</li>
+                <li>Entertainment</li>
+                <li>Future plans</li>
+                <li>Experiences</li>
+            </ul>
+        </div>
+        <div class="content-box">
+            <h3>Sentence Building</h3>
+            <ul>
+                <li>Mengembangkan kalimat sederhana menjadi kalimat yang lebih lengkap</li>
+                <li>Menghubungkan alasan, contoh, pengalaman, dan pendapat</li>
+                <li>Membangun kalimat dari vocabulary yang sudah dikuasai</li>
+            </ul>
+        </div>
+        <div class="content-box">
+            <h3>Conversation Skills</h3>
+            <ul>
+                <li>Asking questions</li>
+                <li>Answering naturally</li>
+                <li>Continuing a conversation</li>
+                <li>Giving explanations</li>
+                <li>Telling stories</li>
+                <li>Expressing feelings</li>
+                <li>Giving opinions</li>
+            </ul>
+        </div>
+        <div class="content-box">
+            <h3>Fluency Training</h3>
+            <ul>
+                <li>30-second speaking</li>
+                <li>1-minute speaking</li>
+                <li>Picture description</li>
+                <li>Storytelling</li>
+                <li>Roleplay</li>
+                <li>Random-topic speaking</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="target-box">
+        Target Akhir: "I know the words, and now I can actually use them."
+    </div>
+
+    <div class="page-footer">TKA English Warriors • English Pathfinder</div>
+</div>
+
+<!-- HALAMAN 4: ENGLISH INITIATE -->
+<div class="page theme-initiate">
+    <div class="section-header">
+        <div>
+            <span class="level-num">3</span>
+            <span class="section-title">ENGLISH INITIATE</span>
+        </div>
+        <div class="tagline">"Build the Foundation"</div>
+    </div>
+
+    <div class="peserta">
+        <strong>Peserta:</strong> Untuk peserta yang baru mengetahui vocabulary dasar dan masih membangun 
+        kepercayaan diri menggunakan Bahasa Inggris.
+    </div>
+
+    <div class="content-grid">
+        <div class="content-box">
+            <h3>Basic Vocabulary</h3>
+            <ul>
+                <li>Numbers</li>
+                <li>Colors</li>
+                <li>Family</li>
+                <li>School</li>
+                <li>Objects</li>
+                <li>Food & drinks</li>
+                <li>Animals</li>
+                <li>Places</li>
+                <li>Transportation</li>
+                <li>Time</li>
+                <li>Weather</li>
+                <li>Daily activities</li>
+            </ul>
+        </div>
+        <div class="content-box">
+            <h3>Basic Expressions</h3>
+            <ul>
+                <li>Greeting</li>
+                <li>Introduction</li>
+                <li>Asking for help</li>
+                <li>Asking questions</li>
+                <li>Saying thanks</li>
+                <li>Apologizing</li>
+                <li>Asking permission</li>
+                <li>Saying likes/dislikes</li>
+            </ul>
+        </div>
+        <div class="content-box">
+            <h3>Basic Grammar</h3>
+            <ul>
+                <li>Pronouns</li>
+                <li>To be</li>
+                <li>Simple Present</li>
+                <li>Simple Past</li>
+                <li>Simple Future</li>
+                <li>Question words</li>
+                <li>Basic prepositions</li>
+                <li>Basic sentence structure</li>
+            </ul>
+        </div>
+        <div class="content-box">
+            <h3>Pronunciation</h3>
+            <ul>
+                <li>Alphabet</li>
+                <li>Basic sounds</li>
+                <li>Word pronunciation</li>
+                <li>Common pronunciation mistakes</li>
+                <li>Listening & repeating</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="target-box">
+        Target Akhir: "I can understand and respond to basic English."
+    </div>
+
+    <div class="page-footer">TKA English Warriors • English Initiate</div>
+</div>
+
+<!-- HALAMAN 5: JALUR PERKEMBANGAN -->
+<div class="page roadmap-page">
+    <div class="roadmap-title">JALUR PERKEMBANGAN</div>
+    <div class="roadmap-sub">Dari fondasi menuju komunikasi global</div>
+
+    <div class="roadmap-flow">
+        <div class="roadmap-card">
+            <h4>ENGLISH INITIATE</h4>
+            <p>Learn the words</p>
+        </div>
+        <div class="roadmap-arrow">→</div>
+        <div class="roadmap-card">
+            <h4>ENGLISH PATHFINDER</h4>
+            <p>Use the words</p>
+        
